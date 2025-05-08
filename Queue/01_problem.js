@@ -7,14 +7,42 @@
  * 
  *  */ 
 
-function queueTheNumber(input, check) {
-    const queuedElement = new Array(input.length)
-    for(let i = 0; i < input.length; i++){
-        queuedElement.push(input[i])
+import { Queue } from "./array-class.js"
+
+
+function reverseFirstK(queue, k){
+    moveKtoEnd(queue, k)
+    let size = queue.size() - k
+    while (size-- > 0) {
+        let x = queue.front()
+        queue.dequeue()
+        queue.enqueue(x)
     }
-    return queuedElement
+    return queue
 }
 
-const input = "12345"
-const check = "3"
-console.log(queueTheNumber(input, check))
+function moveKtoEnd(queue, k) {
+    if (k === 0) return
+    let e = queue.front()
+    queue.dequeue()
+    moveKtoEnd(queue, k - 1)
+    queue.enqueue(e)
+}
+
+const queue = new Queue()
+
+queue.enqueue(1)
+queue.enqueue(2)
+queue.enqueue(3)
+queue.enqueue(4)
+queue.enqueue(5)
+queue.enqueue(6)
+
+let k = 4
+
+let q = reverseFirstK(queue, k)
+
+while (!q.isEmpty()){
+    console.log(q.front())
+    q.dequeue()
+}

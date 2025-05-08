@@ -1,5 +1,5 @@
 // Queue works on principle of First In, Last Out (FIFO))
-class Queue {
+export class Queue {
     constructor(){
         this.items = []
     }
@@ -27,6 +27,14 @@ class Queue {
         return this.items
     }
 
+    front(){
+        if(this.isEmpty()){
+            console.log(" Queue is empty")
+            return
+        }
+        return this.items[0]
+    }
+
     isEmpty(){
         return this.items.length === 0
     }
@@ -45,12 +53,12 @@ class Queue {
 
 }
 
-const queue = new Queue()
-queue.enqueue(1)
-queue.enqueue(2)
-queue.enqueue(3)
-console.log("poped element: ", queue.dequeue())
-console.log("size of the queue: ", queue.size())
-console.log("quick look on queue: ", queue.peek())
-queue.print()
+// const queue = new Queue()
+// queue.enqueue(1)
+// queue.enqueue(2)
+// queue.enqueue(3)
+// console.log("poped element: ", queue.dequeue())
+// console.log("size of the queue: ", queue.size())
+// console.log("quick look on queue: ", queue.peek())
+// queue.print()
 // queue.enqueue(1)
