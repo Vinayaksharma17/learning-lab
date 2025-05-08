@@ -12,7 +12,8 @@ class Queue {
     dequeue(){
     // The dequeue method is nothing but the shift method from the array which will pop last element from the array.
         if(this.isEmpty()){
-            return "Queue is empty"
+            console.log("Queue is empty")
+            return 
         }
         return this.items.shift()
     }
@@ -20,7 +21,8 @@ class Queue {
     peek(){
     // The peek method shows the every first element from the array which is 0th index
         if(this.isEmpty()){
-            return "Queue is empty"
+            console.log("Queue is empty")
+            return 
         }
         return this.items
     }
@@ -35,7 +37,8 @@ class Queue {
 
     print(){
         if(this.isEmpty()){
-            return "Queue is empty"
+            console.log("Queue is empty")
+            return 
         }
         console.log(this.items.join(" -> "))
     }
