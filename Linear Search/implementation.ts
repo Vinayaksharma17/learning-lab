@@ -1,42 +1,41 @@
-// traditional method
-function linearSearch (arr: any[], index: any) {
-    for(let i = 0; i < arr.length; i++){
-        if(arr[i] === 5){
-            return console.log(`Found the element in the array at position: ${arr[i]} and the value is: ${index}`)
+// Linear Search implementation with TypeScript types
+
+// Generic linear search function
+function linearSearch<T>(arr: T[], targetValue: T): number {
+    for(let i = 0; i < arr.length; i++) {
+        if(arr[i] === targetValue) {
+            return i; // Return the index where element was found
         }
     }
-    return - 1
+    return -1; // Element not found
 }
 
-// const myArray = [1, 2, 3, 4, 5, 6, 7, 8]
-// linearSearch(myArray, 5)
-
-// another method
-
-const linearSearch1 = (arr: any[], index: any) => {
-    for(const i in arr) {
-        if (arr[i] === index) {
-            return console.log(`Found the element in the array at position: ${arr[i]} and the value is: ${index}`)
-        }
-    }
-    return - 1
+// Object type definition for the user objects
+interface User {
+    name: string;
+    age: string;
 }
 
-const myArray1 = [1, 2, 3, 4, 5, 6, 7, 8]
-linearSearch1(myArray1, 4)
-
-// Linear search on objects
-
-function linearSearchObject (arr: any[], targetValue: string, property: string) {
-    for(let i = 0; i < arr.length; i++){
+// Linear search for objects with specified property
+function linearSearchObject<T, K extends keyof T>(
+    arr: T[], 
+    targetValue: T[K], 
+    property: K
+): number {
+    for(let i = 0; i < arr.length; i++) {
         if(arr[i][property] === targetValue) {
-            return console.log("This name is present in the list")
+            return i; // Return the index where element was found
         }
     }
-    return console.log("name is not present in the list")
+    return -1; // Element not found
 }
 
-const users = [
+// Example usage
+const myArray = [1, 2, 3, 4, 5, 6, 7, 8];
+const foundIndex = linearSearch(myArray, 5);
+console.log(`Element found at index: ${foundIndex}`);
+
+const users: User[] = [
     {
         "name": "vinayak",
         "age": "25"
@@ -44,12 +43,16 @@ const users = [
     {
         "name": "huli",
         "age": "27"
-    }, {
+    }, 
+    {
         "name": "naryaa",
         "age": "24"
-    }, {
+    }, 
+    {
         "name": "abyaa",
         "age": "23"
     }
-]
-linearSearchObject(users, 'test', 'name')
+];
+
+const userIndex = linearSearchObject(users, 'huli', 'name');
+console.log(userIndex >= 0 ? "User found in the list" : "User not found");
