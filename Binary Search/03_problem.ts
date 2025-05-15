@@ -1,3 +1,25 @@
+/**
+ * 
+ *Allocate Minimum Number of Pages
+
+Problem: You have N books, and the i-th book has pages[i] number of pages. 
+You want to allocate these books to M students such that each student gets at 
+least one book and the maximum number of pages allocated to any student is minimized. 
+You need to find this minimum possible maximum number of pages.
+
+Constraints:
+
+1 <= N <= 10^5
+1 <= M <= N
+1 <= pages[i] <= 10^9
+Monotonic Property: If it's possible to allocate books such that the maximum
+pages a student reads is X, then it's also possible to do so for any Y > X.
+ * 
+ * @param pages 
+ * @param numStudents 
+ * @returns 
+ */
+
 function allocateMinimumPages(pages, numStudents) {
   if (numStudents > pages.length) {
     return -1 // Not possible to allocate
