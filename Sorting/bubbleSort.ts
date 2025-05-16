@@ -1,6 +1,6 @@
-function bubbleSort(arr) {
+function bubbleSort(arr: number[]) {
   const l = arr.length
-  let swapped
+  let swapped: boolean
   do {
     swapped = false
     for (let i = 0; i < l - 1; i++) {
@@ -14,9 +14,9 @@ function bubbleSort(arr) {
   return arr
 }
 
-function bubbleSortUsingForLoop(arr) {
+function bubbleSortUsingForLoop(arr: number[]) {
   const l = arr.length
-  let swapped
+  let swapped: boolean
   for (let i = 1; i < l - 1; i++) {
     swapped = false
     for (let j = 0; j < l - 1 - i; j++) {
