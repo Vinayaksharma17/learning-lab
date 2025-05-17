@@ -18,3 +18,11 @@ const unsortedArr = [64, 34, 25, 12, 22, 11, 90]
 console.log('This is unsorted Array: ', unsortedArr)
 const selectionSortedArr = selectionSort([...unsortedArr]) //Create a copy to avoid modifying the original
 console.log('Sorted Array using Selection Sort: ', selectionSortedArr)
+
+/**
+ * Time Complexity of Selection sort:
+ * Best-Case Time Complexity - O(n^2)
+ * Worst-Case Time Complexity - O(n^2)
+ * 
+ * * Space Complexity is O(1)
+ */
