@@ -21,3 +21,12 @@ function quickSort(arr: number[]) {
 
 const unsortedArrayyyy = [64, 34, 25, 12, 22, 11, 90, 10]
 console.log(quickSort(unsortedArrayyyy))
+
+/**
+ * Time Complexity of Bubble sort:
+ * Best-Case Time Complexity - O(log n)
+ * Worst-Case Time Complexity - O(n^2)
+ *
+ * Space Complexity is O(log n) - Average Case due to recursive call stack
+ * Worst Case - O(n)
+ */

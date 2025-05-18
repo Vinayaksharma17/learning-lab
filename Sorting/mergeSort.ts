@@ -42,4 +42,11 @@ function merge(arr1: number[], arr2: number[]): number[] {
 const unsortedArrayyy = [64, 34, 25, 12, 22, 11, 90, 10]
 console.log(mergeSort(unsortedArrayyy))
 
-// mergeSort(unsortedArrayyy)
+
+/**
+ * Time Complexity of merge sort:
+ * Best-Case Time Complexity - O(n log n)
+ * Worst-Case Time Complexity - O(n log n)
+ * 
+ * Space Complexity is O(n)
+ */
