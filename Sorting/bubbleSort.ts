@@ -14,9 +14,9 @@ function bubbleSort(arr: number[]) {
   return arr
 }
 
-function bubbleSortUsingForLoop(arr: number[]) {
+export function bubbleSortUsingForLoop(arr: number[]) {
   const l = arr.length
-  let swapped: boolean  
+  let swapped: boolean
   for (let i = 0; i < l - 1; i++) {
     // Fixed: start with i = 0
     swapped = false
@@ -32,21 +32,21 @@ function bubbleSortUsingForLoop(arr: number[]) {
   }
   return arr
 }
-const unsortedArray = [64, 34, 25, 12, 22, 11, 90]
-console.log('This is unsorted Array: ', unsortedArray)
-const bubbleSortedArray = bubbleSort([...unsortedArray]) //Create a copy to avoid modifying the original
-console.log('Sorted Array using Bubble Sort: ', bubbleSortedArray)
+// const unsortedArray = [64, 34, 25, 12, 22, 11, 90]
+// console.log('This is unsorted Array: ', unsortedArray)
+// const bubbleSortedArray = bubbleSort([...unsortedArray]) //Create a copy to avoid modifying the original
+// console.log('Sorted Array using Bubble Sort: ', bubbleSortedArray)
 
-const bubbleSortedArrayForLoop = bubbleSortUsingForLoop([...unsortedArray]) // Fixed: use bubbleSortUsingForLoop, not bubbleSort
-console.log(
-  'Sorted Array using Bubble Sort for loop: ',
-  bubbleSortedArrayForLoop
-)
+// const bubbleSortedArrayForLoop = bubbleSortUsingForLoop([...unsortedArray]) // Fixed: use bubbleSortUsingForLoop, not bubbleSort
+// console.log(
+//   'Sorted Array using Bubble Sort for loop: ',
+//   bubbleSortedArrayForLoop
+// )
 
 /**
  * Time Complexity of Bubble sort:
  * Best-Case Time Complexity - O(n)
  * Worst-Case Time Complexity - O(n^2)
- * 
+ *
  * Space Complexity is O(1)
  */

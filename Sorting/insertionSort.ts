@@ -1,4 +1,4 @@
-function insertionSort(arr: number[]) {
+export function insertionSort(arr: number[]) {
   const n = arr.length
   for (let i = 1; i < n; i++) {
     const currentElement = arr[i]
@@ -12,10 +12,10 @@ function insertionSort(arr: number[]) {
   return arr
 }
 
-const unsortedAr = [64, 34, 25, 12, 22, 11, 90]
-console.log('This is unsorted Array: ', unsortedAr)
-const unsortedArrayy = insertionSort([...unsortedAr]) //Create a copy to avoid modifying the original
-console.log('Sorted Array using Bubble Sort: ', unsortedArrayy)
+// const unsortedAr = [64, 34, 25, 12, 22, 11, 90]
+// console.log('This is unsorted Array: ', unsortedAr)
+// const unsortedArrayy = insertionSort([...unsortedAr]) //Create a copy to avoid modifying the original
+// console.log('Sorted Array using Insertion Sort: ', unsortedArrayy)
 
 /**
  * Time Complexity of insertion sort:

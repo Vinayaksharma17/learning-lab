@@ -1,4 +1,4 @@
-function mergeSort(arr: number[]): number[] {
+export function mergeSort(arr: number[]): number[] {
   if (arr.length <= 1) return arr
 
   const mid = Math.floor(arr.length / 2)
@@ -39,14 +39,13 @@ function merge(arr1: number[], arr2: number[]): number[] {
   return result
 }
 
-const unsortedArrayyy = [64, 34, 25, 12, 22, 11, 90, 10]
-console.log(mergeSort(unsortedArrayyy))
-
+// const unsortedArrayyy = [64, 34, 25, 12, 22, 11, 90, 10]
+// console.log(mergeSort(unsortedArrayyy))
 
 /**
  * Time Complexity of merge sort:
  * Best-Case Time Complexity - O(n log n)
  * Worst-Case Time Complexity - O(n log n)
- * 
+ *
  * Space Complexity is O(n)
  */
