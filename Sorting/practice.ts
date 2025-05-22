@@ -92,4 +92,26 @@ function merge(arr1: number[], arr2: number[]): number[] {
   return result
 }
 
-console.log(mergeSort([29, 10, 14, 37, 14]))
+
+
+function quickSort(arr) {
+  if (arr.length <= 1) return arr
+
+  const pivot = arr[arr.length - 1]
+  let left: number[] = []
+  let right: number[] = []
+
+  for (let i = 0; i < arr.length - 1; i++) {
+    if (arr[i] < pivot) {
+      left.push(arr[i])
+    } else {
+      right.push(arr[i])
+    }
+  }
+
+  const sortedLeft = quickSort(left)
+  const sortedRight = quickSort(right)
+
+  return [...sortedLeft, pivot, ...sortedRight]
+}
+console.log(quickSort([29, 10, 14, 37, 14, 2]))

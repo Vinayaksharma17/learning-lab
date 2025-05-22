@@ -2,6 +2,7 @@ export function quickSort(arr: number[]) {
   if (arr.length <= 1) return arr
 
   const pivot = arr[arr.length - 1]
+  console.log(pivot)
   const left: number[] = []
   const right: number[] = []
 
