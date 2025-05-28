@@ -27,3 +27,21 @@ const mixedArray = [
 ]
 const mixedCounts = countMixedFrequencies(mixedArray)
 console.log('Mixed Frequencies (Map):', mixedCounts)
+
+function countWordFrequencies(sentence) {
+  const wordsFrequencies = new Map()
+  const lowerCaseWords = sentence.toLowerCase().match(/\b\w+\b/g)
+
+  if (!lowerCaseWords) return wordsFrequencies
+
+  for (const word of lowerCaseWords) {
+    // wordsFrequencies[word] = (wordsFrequencies[word] || 0) + 1
+    wordsFrequencies.set(word, (wordsFrequencies.get(word) || 0) + 1)
+  }
+
+  return wordsFrequencies
+}
+
+const sentence = 'Hello world, this is a beautiful World!'
+const wordCounts = countWordFrequencies(sentence)
+console.log('Word Frequencies (Map):', wordCounts)
