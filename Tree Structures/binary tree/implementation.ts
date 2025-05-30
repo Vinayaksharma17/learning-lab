@@ -1,36 +1,63 @@
-function BinaryNode(data) {
-  this.data = data
-  this.left = null
-  this.right = null
+// Define the TreeNode class
+class TreeNode {
+  value: number
+  left: TreeNode | null = null
+  right: TreeNode | null = null
+
+  constructor(value: number) {
+    this.value = value
+  }
 }
 
+// Define the BinarySearchTree class
 class BinarySearchTree {
-  constructor() {
-    this.root = null
-  }
+  root: TreeNode | null = null
 
-  insert(data) {
-    const newNode = new BinaryNode(data)
-    if (this.root === null) {
+  // Insert a node in the BST
+  insert(value: number): void {
+    const newNode = new TreeNode(value)
+    if (!this.root) {
       this.root = newNode
-    } else {
-      this._insertNode(this.root, newNode)
+      return
+    }
+    let current = this.root
+    while (true) {
+      if (value < current.value) {
+        if (!current.left) {
+          current.left = newNode
+          return
+        }
+        current = current.left
+      } else if (value > current.value) {
+        if (!current.right) {
+          current.right = newNode
+          return
+        }
+        current = current.right
+      } else {
+        // Duplicates not allowed in this BST implementation
+        return
+      }
     }
   }
 
-  _insertNode(node, newNode) {
-    if (newNode.data < node.data) {
-      if (node.left === null) {
-        node.left = newNode
-      } else {
-        this._insertNode(node.left, newNode)
-      }
-    } else {
-      if (node.right === null) {
-        node.right = newNode
-      } else {
-        this._insertNode(node.right, newNode)
-      }
+  // In-order traversal (Left, Root, Right)
+  inOrderTraversal(node: TreeNode | null, result: number[] = []): number[] {
+    if (node) {
+      this.inOrderTraversal(node.left, result)
+      result.push(node.value)
+      this.inOrderTraversal(node.right, result)
     }
+    return result
   }
 }
+
+// Test the BinarySearchTree class
+const bst = new BinarySearchTree()
+bst.insert(10)
+bst.insert(5)
+bst.insert(15)
+bst.insert(2)
+bst.insert(7)
+
+console.log('In-order Traversal:', bst.inOrderTraversal(bst.root)) // Output: [2, 5, 7, 10, 15]
