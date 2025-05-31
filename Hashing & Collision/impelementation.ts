@@ -1,3 +1,5 @@
+//test impelementation
+
 class HashTableSeparateChaining {
   private table: Array<any>
   private size: number
