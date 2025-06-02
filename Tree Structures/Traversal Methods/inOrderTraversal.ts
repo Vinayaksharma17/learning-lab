@@ -11,7 +11,7 @@
  * or evaluating expressions in certain types of expression trees.
  */
 
-class Nodes {
+export class Nodes {
   value: any
   left: any
   right: any
