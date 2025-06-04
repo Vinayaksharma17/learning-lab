@@ -58,6 +58,53 @@ class BinarySearchTree {
     return found
   }
 
+  remove(value) {
+    this.root = this._removeNode(this.root, value)
+    return this
+  }
+
+  _removeNode(node, value) {
+    if (node === null) return null
+
+    if (value < node.value) {
+      node.left = this._removeNode(node.left, value)
+      return node
+    } else if (value > node.value) {
+      node.right = this._removeNode(node.right, value)
+      return node
+    } else {
+      // case 1: Node has no children
+      if (node.left === null && node.right === null) {
+        node = null
+        return node
+      }
+
+      //case 2: Node has one child
+      if (node.left === null) {
+        node = node.right
+        return node
+      } else if (node.right === null) {
+        node = node.left
+        return node
+      }
+      //case 3: Node has two children
+      //Find the minimum value in the right subtree (in-order successor)
+      // or, find the maximum value in the left subtree (in-order predecessor)
+      let tempNode = this._findMinNode(node.right)
+      node.value = tempNode.value
+
+      node.right = this._removeNode(node.right, tempNode.value)
+      return node
+    }
+  }
+
+  _findMinNode(node) {
+    while (node.left !== null) {
+      node = node.left
+    }
+    return node
+  }
+
   // In-order traversal (Left, Root, Right)
   inOrderTraversal(node: TreeNode | null, result: number[] = []): number[] {
     if (node) {
