@@ -1,4 +1,4 @@
-class MinHeap {
+class MaxHeap {
   heap: any
   constructor() {
     this.heap = []
@@ -43,18 +43,18 @@ class MinHeap {
   swap(indexOne, indexTwo) {
     ;[this.heap[indexOne], this.heap[indexTwo]] = [
       this.heap[indexTwo],
-      this.heap[indexOne],
+      [this.heap[indexOne]],
     ]
   }
 
   peek() {
-    if (this.heap === 0) return null
-
+    if (this.heap.length === 0) {
+      return null
+    }
     return this.heap[0]
   }
 
-  // Removes and returns the minimum element (root)
-  extractMin() {
+  extractMax() {
     if (this.heap.length === 0) {
       return null
     }
@@ -68,14 +68,14 @@ class MinHeap {
     return item
   }
 
-  // Adds a new element
   insert(item) {
     this.heap.push(item)
     this.heapifyUp() // Restore heap property
   }
+
   heapifyUp() {
     let index = this.heap.length - 1 // Start from the newly added element
-    while (this.hasParent(index) && this.getParent(index) > this.heap[index]) {
+    while (this.hasParent(index) && this.getParent(index) < this.heap[index]) {
       this.swap(this.getParentIndex(index), index)
       index = this.getParentIndex(index)
     }
@@ -84,37 +84,35 @@ class MinHeap {
   heapifyDown() {
     let index = 0 // Start from the root
     while (this.hasLeftChild(index)) {
-      let smallerChildIndex = this.getLeftChildIndex(index)
+      let largerChildIndex = this.getLeftChildIndex(index)
       if (
         this.hasRightChild(index) &&
-        this.getRightChild(index) < this.getLeftChild(index)
+        this.getRightChild(index) > this.getLeftChild(index)
       ) {
-        smallerChildIndex = this.getRightChildIndex(index)
+        largerChildIndex = this.getRightChildIndex(index)
       }
 
-      if (this.heap[index] < this.heap[smallerChildIndex]) {
+      if (this.heap[index] > this.heap[largerChildIndex]) {
         break // Heap property is satisfied
       } else {
-        this.swap(index, smallerChildIndex)
+        this.swap(index, largerChildIndex)
       }
-      index = smallerChildIndex
+      index = largerChildIndex
     }
   }
 
   printHeap() {
-    console.log('Min-Heap:', this.heap)
+    console.log('Max-Heap:', this.heap)
   }
 }
 
-const minHeap = new MinHeap()
-minHeap.insert(10)
-minHeap.insert(4)
-minHeap.insert(15)
-minHeap.insert(1)
-minHeap.insert(9)
-minHeap.insert(20)
+console.log('\n--- Max-Heap ---')
+const maxHeap = new MaxHeap()
+maxHeap.insert(10)
+maxHeap.insert(4)
+maxHeap.insert(15)
+maxHeap.insert(1)
+maxHeap.insert(9)
+maxHeap.insert(20)
 
-minHeap.printHeap()
-
-console.log('Peek (Min): ', minHeap.peek())
-console.log('Peek (Min): ', minHeap.peek())
+maxHeap.printHeap()
