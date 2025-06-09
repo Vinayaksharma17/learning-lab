@@ -1,4 +1,4 @@
-class MinHeap {
+export class MinHeap {
   heap: any
   constructor() {
     this.heap = []
@@ -51,6 +51,10 @@ class MinHeap {
     if (this.heap === 0) return null
 
     return this.heap[0]
+  }
+
+  size() {
+    return this.heap.length
   }
 
   // Removes and returns the minimum element (root)
