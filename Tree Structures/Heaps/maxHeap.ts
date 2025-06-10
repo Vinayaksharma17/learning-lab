@@ -1,4 +1,4 @@
-class MaxHeap {
+export class MaxHeap {
   heap: any
   constructor() {
     this.heap = []
@@ -99,6 +99,10 @@ class MaxHeap {
       }
       index = largerChildIndex
     }
+  }
+
+  size() {
+    return this.heap.length
   }
 
   printHeap() {
