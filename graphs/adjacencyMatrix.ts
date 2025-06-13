@@ -1,2 +1,24 @@
-// Learning about the Adjacency Matrix and List 
-// Will implement it soon...
+function addEdge(mat, i, j) {
+  mat[i][j] = 1
+  mat[j][i] = 1
+}
+
+function displayMatrix(mat) {
+  // Display the adjacency matrix
+  for (const row of mat) {
+    console.log(row.join(' '))
+  }
+}
+
+const V = 4 // Number of vertices (No of nodes)
+
+// Initialize matrix
+let mat = Array.from({ length: V }, () => Array(V).fill(0))
+
+addEdge(mat, 0, 1)
+addEdge(mat, 0, 2)
+addEdge(mat, 1, 2)
+addEdge(mat, 2, 3)
+
+console.log('Adjacency Matrix: ')
+displayMatrix(mat)
