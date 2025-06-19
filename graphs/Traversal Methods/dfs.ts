@@ -23,6 +23,7 @@ declare module './graph' {
   interface Graph {
     bfs(startingNode: any): any[]
     dfsRecursive(startingNode: any): any[]
+    dfsIterative(startingNode: any): any[]
   }
 }
 
@@ -48,6 +49,36 @@ declare module './graph' {
   return result
 }
 
+// DFS - Iterative Implementation
+;(Graph.prototype as any).dfsIterative = function (startingNode: any) {
+  const stack = [startingNode]
+  const visited = new Set()
+  const result: any[] = [] // To store the order of traversal
+
+  while (stack.length > 0) {
+    const currentNode = stack.pop() // Pop from the top
+
+    if (!visited.has(currentNode)) {
+      visited.add(currentNode)
+      result.push(currentNode)
+
+      // Push neighbors onto the stack.
+      // For consistent output with recursive DFS, often push in reverse order
+      // of how they appear in the adjacency list, so the first neighbor is processed last (LIFO).
+      const neighbors = this.getNeighbors
+        ? this.getNeighbors(currentNode)
+        : this.adjacencyList.get(currentNode) || []
+      for (let i = neighbors.length - 1; i >= 0; i--) {
+        const neighbor = neighbors[i]
+        if (!visited.has(neighbor)) {
+          stack.push(neighbor)
+        }
+      }
+    }
+  }
+  return result
+}
+
 const graphDFS = new Graph()
 graphDFS.addVertex('A')
 graphDFS.addVertex('B')
@@ -70,3 +101,10 @@ console.log(
 )
 // Expected output (can vary based on neighbor order in adjacency list):
 // DFS Recursive Traversal starting from 'A': [ 'A', 'B', 'D', 'E', 'C', 'F' ] or [ 'A', 'C', 'E', 'D', 'B', 'F' ] etc.
+
+console.log(
+  "DFS Iterative Traversal starting from 'A':",
+  graphDFS.dfsIterative('A')
+)
+// Output might be different from recursive based on stack push order, but should be a valid DFS.
+// Example: DFS Iterative Traversal starting from 'A': [ 'A', 'C', 'E', 'F', 'D', 'B' ]
