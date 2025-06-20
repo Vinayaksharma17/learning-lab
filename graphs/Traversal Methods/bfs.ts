@@ -27,6 +27,8 @@ declare module './graph' {
   }
 }
 
+
+
 // Add the BFS method to the Graph class prototype
 Graph.prototype.bfs = function (startingNode) {
   const queue = [startingNode]
