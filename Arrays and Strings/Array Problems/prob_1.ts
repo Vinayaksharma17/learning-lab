@@ -37,12 +37,11 @@ console.log(findSecondLargestEle(arr))
 
 // Time Complexity: O(n*log(n))
 
-
-//Approach 2: 
+//Approach 2:
 // JavaScript program to find the second largest element in the array
 // using two traversals
 
-function getSecondLargest(arr) {
+function getSecondLargestApp2(arr) {
   let n = arr.length
 
   let largest = -1,
@@ -65,4 +64,48 @@ function getSecondLargest(arr) {
 }
 
 let arr1 = [12, 35, 1, 10, 34, 1]
-console.log(getSecondLargest(arr1))
+console.log(getSecondLargestApp2(arr1))
+
+// Approach 3
+// JavaScript program to find the second largest element in the array
+// using one traversal
+
+// function to find the second largest element in the array
+function getSecondLargestApp3(arr) {
+  const n = arr.length
+
+  let largest = -1,
+    secondLargest = -1
+
+  // finding the second largest element
+  for (let i = 0; i < n; i++) {
+    // If arr[i] > largest, update second largest with
+    // largest and largest with arr[i]
+    if (arr[i] > largest) {
+      secondLargest = largest
+      largest = arr[i]
+    }
+
+    // If arr[i] < largest and arr[i] > second largest,
+    // update second largest with arr[i]
+    else if (arr[i] < largest && arr[i] > secondLargest) {
+      secondLargest = arr[i]
+    }
+  }
+  return secondLargest
+}
+
+const arr3 = [12, 35, 1, 10, 34, 1]
+console.log(getSecondLargestApp3(arr3))
+
+function secondLargest(arr: any) {
+  if (arr.length < 2) {
+    return -1
+  }
+  // Create a copy to avoid modifying the original array
+  const sortedArr = [...arr].sort((a, b) => a - b)
+  return sortedArr[sortedArr.length - 2]
+}
+
+let arr2 = [12, 35, 1, 10, 34, 1]
+console.log(secondLargest(arr2))
