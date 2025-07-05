@@ -98,14 +98,3 @@ function getSecondLargestApp3(arr) {
 const arr3 = [12, 35, 1, 10, 34, 1]
 console.log(getSecondLargestApp3(arr3))
 
-function secondLargest(arr: any) {
-  if (arr.length < 2) {
-    return -1
-  }
-  // Create a copy to avoid modifying the original array
-  const sortedArr = [...arr].sort((a, b) => a - b)
-  return sortedArr[sortedArr.length - 2]
-}
-
-let arr2 = [12, 35, 1, 10, 34, 1]
-console.log(secondLargest(arr2))
