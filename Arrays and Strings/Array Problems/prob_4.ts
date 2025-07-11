@@ -31,3 +31,25 @@ function maxProduct(arr) {
 // Driver code
 let arr = [10, 3, 5, 6, 20]
 console.log(maxProduct(arr))
+
+// Function to find a maximum product of a triplet
+// in array of integers of size n
+function maxProduct1(arr) {
+  let n = arr.length
+
+  // Sort the array in ascending order
+  arr.sort((a, b) => a - b)
+
+  // Return the maximum of product of last three
+  // elements and product of first two elements
+  // and last element
+  return Math.max(
+    arr[0] * arr[1] * arr[n - 1],
+    arr[n - 1] * arr[n - 2] * arr[n - 3]
+  )
+}
+
+//Driver code
+let arr1 = [-10, -3, 5, 6, -20]
+let max = maxProduct1(arr1)
+console.log(max)
