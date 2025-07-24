@@ -15,12 +15,12 @@ After third left rotation, arr[] = {1, 2, 3}
 After fourth left rotation, arr[] = {2, 3, 1}
  */
 
-function rotateArr(arr, d) {
+function rotateArr(arr: number[], d: number) {
   let n = arr.length
 
   // Repeat the rotation d times
   for (let i = 0; i < d; i++) {
-    // Left rotate the array by one position
+    // Left rotate the array by one position 
     let first = arr[0]
     for (let j = 0; j < n - 1; j++) {
       arr[j] = arr[j + 1]
