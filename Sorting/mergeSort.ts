@@ -39,8 +39,8 @@ function merge(arr1: number[], arr2: number[]): number[] {
   return result
 }
 
-// const unsortedArrayyy = [64, 34, 25, 12, 22, 11, 90, 10]
-// console.log(mergeSort(unsortedArrayyy))
+const unsortedArrayyy = [64, 34, 25, 12, 22, 11, 90, 10]
+console.log(mergeSort(unsortedArrayyy))
 
 /**
  * Time Complexity of merge sort:
